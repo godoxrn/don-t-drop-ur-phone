@@ -1,0 +1,1 @@
+var mapList = [[{Group:0,index:0,ID:4,idto:[-2,-2,-2,-2],right:-2,upSide:"1,1",leftSide:"2,2",downSide:"3,3",rightSide:"4,4"},{Group:0,index:1,ID:5,idto:[-2,-2,-2,-2],right:-2,upSide:"1,1",leftSide:"2,2",downSide:"3,3",rightSide:"4,4"}]]
