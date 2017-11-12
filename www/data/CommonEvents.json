@@ -96,8 +96,8 @@ null,
 {"id":94,"list":[{"code":0,"indent":0,"parameters":[]}],"name":"","switchId":1,"trigger":0},
 {"id":95,"list":[{"code":0,"indent":0,"parameters":[]}],"name":"","switchId":1,"trigger":0},
 {"id":96,"list":[{"code":0,"indent":0,"parameters":[]}],"name":"","switchId":1,"trigger":0},
-{"id":97,"list":[{"code":356,"indent":0,"parameters":["XornTeleport up"]},{"code":0,"indent":0,"parameters":[]}],"name":"上方传送","switchId":1,"trigger":0},
-{"id":98,"list":[{"code":356,"indent":0,"parameters":["XornTeleport left"]},{"code":0,"indent":0,"parameters":[]}],"name":"左方传送","switchId":1,"trigger":0},
-{"id":99,"list":[{"code":356,"indent":0,"parameters":["XornTeleport down"]},{"code":0,"indent":0,"parameters":[]}],"name":"下方传送","switchId":1,"trigger":0},
-{"id":100,"list":[{"code":356,"indent":0,"parameters":["XornTeleport right"]},{"code":0,"indent":0,"parameters":[]}],"name":"右方传送","switchId":1,"trigger":0}
+{"id":97,"list":[{"code":356,"indent":0,"parameters":["XornTeleport 0"]},{"code":0,"indent":0,"parameters":[]}],"name":"上方传送","switchId":1,"trigger":0},
+{"id":98,"list":[{"code":356,"indent":0,"parameters":["XornTeleport 1"]},{"code":0,"indent":0,"parameters":[]}],"name":"左方传送","switchId":1,"trigger":0},
+{"id":99,"list":[{"code":356,"indent":0,"parameters":["XornTeleport 2"]},{"code":0,"indent":0,"parameters":[]}],"name":"下方传送","switchId":1,"trigger":0},
+{"id":100,"list":[{"code":356,"indent":0,"parameters":["XornTeleport 3"]},{"code":0,"indent":0,"parameters":[]}],"name":"右方传送","switchId":1,"trigger":0}
 ]

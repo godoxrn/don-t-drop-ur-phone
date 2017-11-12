@@ -8,48 +8,39 @@
 		if (command === 'XornTeleport') {
 			XornTeleport(args[0]);
 		}
+		if (command === 'XornTestTeleport') {
+			XornTestTeleport(args[0],args[1],args[2]);
+		}
 	};
 })();
+
+function XornTestTeleport(drct,swch,flag){
+	var mapid = $gameMap._mapId;
+	var mapTemp = findThisMap();
+	var str;
+	flagB = true;
+	if(flag === "false"){
+		flagB = false;
+	}
+	str = mapTemp.sideto[drct].split(",")
+	if (mapTemp.idto[Number(drct)] < 0){
+		$gameSwitches.setValue(swch,flagB);
+	}
+}
 
 
 function XornTeleport(drct){
 	var mapid = $gameMap._mapId;
 	var mapTemp = findThisMap();
 	var str;
-	debugger;
-	if(drct === "up"){
-		str = mapTemp.downSide.split(",")
-		if (mapTemp.idto[0] >= 0){
-			$gamePlayer.reserveTransfer(mapTemp.idto[0], Number(str[0]), Number(str[1]), 0, 0);
-		}else{
-			alert(1);
-		}
+	var a = Number(drct) + 2;
+	if(a>3){
+		a=a-4;
 	}
-	if(drct === "left"){
-		str = mapTemp.rightSide.split(",")
-		if (mapTemp.idto[1] >= 0){
-			$gamePlayer.reserveTransfer(mapTemp.idto[1], Number(str[0]), Number(str[1]), 0, 0);
-		}else{
-			alert(1);
-		}
+	str = mapTemp.sideto[a].split(",")
+	if (mapTemp.idto[Number(drct)] >= 0){
+		$gamePlayer.reserveTransfer(mapTemp.idto[Number(drct)], Number(str[0]), Number(str[1]), 0, 0);
 	}
-	if(drct === "down"){
-		str = mapTemp.upSide.split(",")
-		if (mapTemp.idto[2] >= 0){
-			$gamePlayer.reserveTransfer(mapTemp.idto[2], Number(str[0]), Number(str[1]), 0, 0);
-		}else{
-			alert(1);
-		}
-	}
-	if(drct === "right"){
-		str = mapTemp.leftSide.split(",")
-		if (mapTemp.idto[3] >= 0){
-			$gamePlayer.reserveTransfer(mapTemp.idto[3], Number(str[0]), Number(str[1]), 0, 0);
-		}else{
-			alert(1);
-		}
-	}
-	debugger;
 }
 
 var findThisMap = function (){
