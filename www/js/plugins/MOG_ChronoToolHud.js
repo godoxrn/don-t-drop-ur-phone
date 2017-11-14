@@ -370,7 +370,7 @@ ToolHud.prototype.refreshCostItem = function() {
 	if (this._costItem.item) {
 		this._costItem.itemNumber = $gameParty.numItems(this._costItem.item);
 		var number = this._costItem.itemNumber
-		if (number === 0) {this._itemEnabled = false};
+		//if (number === 0) {this._itemEnabled = false};
 	} else if (this._costItem.mpNumber) {
 	     var number = this._costItem.mpCost
 		 this._costItem.mpNumber = this._actor._mp;
