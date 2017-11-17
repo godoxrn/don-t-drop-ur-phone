@@ -96,7 +96,7 @@ Game_Event.prototype.setupPage = function() {
 //==============================
 Game_Event.prototype.check_event_sensor = function() {
 	if (!this._erased && this.page()) {this.list().forEach(function(l) {
-	       if (l.code === 108) {var comment = l.parameters[0].split(': ');
+	       if (l.code === 108) {var comment = l.parameters[0].split(' : ');
 			   if (comment[0].toLowerCase() == "event sensor"){
                  this._sensor_range = [true,Number(Math.abs(comment[1]))];
 				 this._need_clear_sensor = false;			  

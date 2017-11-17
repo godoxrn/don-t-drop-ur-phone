@@ -80,7 +80,7 @@ Game_Event.prototype.setupPage = function() {
 Game_Event.prototype.check_event_text = function() {
 	this._need_clear_text = true
 	if (!this._erased && this.page()) {this.list().forEach(function(l) {
-	       if (l.code === 108) {var comment = l.parameters[0].split(': ')
+	       if (l.code === 108) {var comment = l.parameters[0].split(' : ')
 			   if (comment[0].toLowerCase() == "event text"){
                   this._char_text = [true,String(comment[1])];
 				  this._need_clear_text = false;			  
@@ -126,7 +126,28 @@ Spriteset_Map.prototype.create_event_text_field = function() {
 	     this._sprite_char_text[i] = new Sprite_CharText(this._characterSprites[i]);
 		 this._etextField.addChild(this._sprite_char_text[i]);
     };
+	characterTemp = this._characterSprites;
 };
+
+var characterTemp;
+
+function eventText(name,str,time){
+	var i;
+	for (var all_Event in $dataMap.events){			
+		if (!$dataMap.events[all_Event]){
+			continue;
+		}
+		var strTemp = String($dataMap.events[all_Event].name);
+		if (strTemp.indexOf(name)>-1){
+			var textTemp = characterTemp[all_Event-1]._character._char_text[1];
+			characterTemp[all_Event-1]._character._char_text = [true,str];
+			setTimeout(function(){
+								characterTemp[all_Event-1]._character._char_text = [true,textTemp];
+							},Number(time));
+			break;
+		}
+	}
+}
 
 //=============================================================================
 // ** Sprite CharText

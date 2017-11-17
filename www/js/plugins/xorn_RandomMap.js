@@ -3,7 +3,7 @@
 	Game_Interpreter.prototype.pluginCommand = function(command, args) {
 		_Game_Interpreter_pluginCommand.call(this, command, args);
 		if (command === 'XornRandom') {
-			newType(args[0]);
+			XornRandom(args[0]);
 		}
 		if (command === 'XornTeleport') {
 			XornTeleport(args[0]);
@@ -14,7 +14,7 @@
 	};
 })();
 
-function XornTestTeleport(drct,swch,flag){
+function XornTestTeleport(drct,evt,flag){
 	var mapid = $gameMap._mapId;
 	var mapTemp = findThisMap();
 	var str;
@@ -24,7 +24,9 @@ function XornTestTeleport(drct,swch,flag){
 	}
 	str = mapTemp.sideto[drct].split(",")
 	if (mapTemp.idto[Number(drct)] < 0){
-		$gameSwitches.setValue(swch,flagB);
+		//$gameSwitches.setValue(swch,flagB);
+		var _mapId = _mapId || $gameMap.mapId();
+		$gameSelfSwitches.setValue([_mapId,evt._eventId,"D"],true);		
 	}
 }
 
@@ -44,7 +46,6 @@ function XornTeleport(drct){
 }
 
 var findThisMap = function (){
-	debugger;
 	var mapid = $gameMap._mapId;
 	var group = $gameVariables._data[1001] || 0;
 	for(var mapin in $gameMap._mapList[group]){
@@ -67,13 +68,14 @@ Game_Map.prototype.initialize = function() {
   this._mapPoints= [];
   this._mapList= [];
 };
-
 	
-function newType(num){
+	
+
+function XornRandom(num){
 	
 	num = num||0;
 	
-	$gameMap._mapList = mapList.concat();
+	$gameMap._mapList = JsonEx.makeDeepCopy(mapList);
 	
 	Array.prototype.shuffle = function() {
 	var n = this.length;
