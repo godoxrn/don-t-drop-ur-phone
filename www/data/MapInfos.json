@@ -1,12 +1,12 @@
 [
 null,
 {"id":1,"expanded":true,"name":"MAP001","order":1,"parentId":0,"scrollX":612,"scrollY":408},
-{"id":2,"expanded":false,"name":"MAP002","order":2,"parentId":0,"scrollX":451,"scrollY":306},
+{"id":2,"expanded":false,"name":"MAP002","order":2,"parentId":0,"scrollX":612,"scrollY":408},
 {"id":3,"expanded":true,"name":"dungeon","order":3,"parentId":0,"scrollX":451,"scrollY":318},
-{"id":4,"expanded":true,"name":"MAP004","order":4,"parentId":3,"scrollX":816,"scrollY":452.5},
-{"id":5,"expanded":true,"name":"MAP005","order":5,"parentId":3,"scrollX":816,"scrollY":452},
+{"id":4,"expanded":true,"name":"MAP004","order":4,"parentId":3,"scrollX":612,"scrollY":408},
+{"id":5,"expanded":true,"name":"MAP005","order":5,"parentId":3,"scrollX":612,"scrollY":408},
 {"id":6,"expanded":true,"name":"MAP006","order":6,"parentId":3,"scrollX":816,"scrollY":452.5},
-{"id":7,"expanded":true,"name":"MAP007","order":7,"parentId":3,"scrollX":816,"scrollY":452.5},
+{"id":7,"expanded":true,"name":"MAP007","order":7,"parentId":3,"scrollX":612,"scrollY":408},
 {"id":8,"expanded":true,"name":"MAP008","order":8,"parentId":3,"scrollX":816,"scrollY":452.5},
 {"id":9,"expanded":true,"name":"MAP009","order":9,"parentId":3,"scrollX":816,"scrollY":452.5},
 {"id":10,"expanded":false,"name":"10 测试地图1","order":10,"parentId":0,"scrollX":816,"scrollY":452}

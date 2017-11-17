@@ -1,4 +1,22 @@
-﻿
+﻿//============================================
+//xorn_test.js
+//============================================
+/*:
+*@plugindesc 显示变量用插件
+*@author xorn
+
+
+* @param testVar
+* @desc  
+* @default 0
+
+*@help
+
+
+end
+*/
+	
+	
 	function Window_Tips() {
     this.initialize.apply(this, arguments);
 	}
@@ -20,20 +38,20 @@
 	};
 
 	Window_Tips.prototype.windowHeight = function() {
-		return this.fittingHeight(4); //自定义窗口的高度：通过设定窗口要容纳的行数来自动计算高度
+		return Graphics.boxHeight*1.2;
+		//return this.fittingHeight(4); //自定义窗口的高度：通过设定窗口要容纳的行数来自动计算高度
 	};
 
-	getvar = function(){
-		return  $gameVariables.value("1");
-	};
 	Window_Tips.prototype.update = function() {
 		var x = this.textPadding();
 		var width = this.contents.width - this.textPadding() * 2;
 		this.contents.clear();
 
+		var param = PluginManager.parameters('xorn_test');
+		var testVar = Number(param['testVar']);
 		//在这里绘制需要显示的内容
-		this.drawIcon(191, 0, 0);
-		this.drawText($gameVariables.value(15), 40, 0);
+		this.drawIcon(191, 0, Graphics.boxHeight -80);
+		this.drawText($gameVariables.value(testVar), 30, Graphics.boxHeight-80);
 		
 	};
 

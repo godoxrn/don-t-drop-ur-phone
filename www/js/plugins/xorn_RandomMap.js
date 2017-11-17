@@ -5,7 +5,18 @@
 *@plugindesc 随机地图用插件
 *@author xorn
 
+
+* @param mapTotal
+* @desc  
+* @default 5
+
+* @param mapVar
+* @desc  
+* @default 100
+
 *@help
+
+
 *插件命令：
 *XornRandom x 
 *随机地图，x是地图集的id
@@ -19,6 +30,8 @@
 *用于测试当前门是否可开启，x为方向。
 end
 */
+
+
 
 (function(){
 	var _Game_Interpreter_pluginCommand = Game_Interpreter.prototype.pluginCommand;
@@ -69,7 +82,10 @@ function XornTeleport(drct){
 
 var findThisMap = function (){
 	var mapid = $gameMap._mapId;
-	var group = $gameVariables._data[1001] || 0;
+	var param = PluginManager.parameters('xorn_randomMap');
+	var mapVar = Number(param['mapVar']);
+	
+	var group = $gameVariables._data[mapVar] || 0;
 	for(var mapin in $gameMap._mapList[group]){
 		if($gameMap._mapList[group][mapin].ID === mapid){
 			return $gameMap._mapList[group][mapin];
@@ -78,7 +94,6 @@ var findThisMap = function (){
 	return -1;
 }
 
-const mapTotal = 1;
 const mapX = 61;
 const mapY = 61;
 const _map1X = 31;
@@ -115,6 +130,15 @@ function XornRandom(num){
 		return this.splice(0,1)
 	}
 	
+	//总共多少地图
+	var param = PluginManager.parameters('xorn_randomMap');
+	
+	var mapTotal = String(param['mapTotal']);
+	var mapVar = Number(param['mapVar']);
+	
+	$gameVariables.setValue(mapVar,num);
+	debugger;
+	
 	
 	
 	while(true){
@@ -130,7 +154,7 @@ function XornRandom(num){
 			}
 		}
 		
-		var listTemp = 0;			
+		var listTemp = num;			
 		var xShift;
 		var yShift;	
 		
