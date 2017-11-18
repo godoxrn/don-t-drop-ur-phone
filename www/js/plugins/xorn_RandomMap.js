@@ -50,19 +50,19 @@ end
 })();
 
 function XornTestTeleport(drct,evt,flag){
-	var mapid = $gameMap._mapId;
-	var mapTemp = findThisMap();
-	var str;
-	flagB = true;
-	if(flag === "false"){
-		flagB = false;
-	}
-	str = mapTemp.sideto[drct].split(",")
-	if (mapTemp.idto[Number(drct)] < 0){
-		//$gameSwitches.setValue(swch,flagB);
-		var _mapId = _mapId || $gameMap.mapId();
-		$gameSelfSwitches.setValue([_mapId,evt._eventId,"D"],true);		
-	}
+		var mapid = $gameMap._mapId;
+		var mapTemp = findThisMap();
+		var str;
+		flagB = true;
+		if(flag === "false"){
+			flagB = false;
+		}
+		str = mapTemp.sideto[drct].split(",")
+		if (mapTemp.idto[Number(drct)] < 0){
+			//$gameSwitches.setValue(swch,flagB);
+			var _mapId = _mapId || $gameMap.mapId();
+			$gameSelfSwitches.setValue([_mapId,evt._eventId,"D"],true);		
+		}
 }
 
 
@@ -74,14 +74,30 @@ function XornTeleport(drct){
 	if(a>3){
 		a=a-4;
 	}
-	str = mapTemp.sideto[a].split(",")
 	if (mapTemp.idto[Number(drct)] >= 0){
-		$gamePlayer.reserveTransfer(mapTemp.idto[Number(drct)], Number(str[0]), Number(str[1]), 0, 0);
+		var mapAno= findAnotherMap(mapTemp.idto[Number(drct)]);
+		if(mapAno){
+			str = mapAno.sideto[a].split(",")
+			$gamePlayer.reserveTransfer(mapTemp.idto[Number(drct)], Number(str[0]), Number(str[1]), 0, 0);
+		}
 	}
 }
 
 var findThisMap = function (){
 	var mapid = $gameMap._mapId;
+	var param = PluginManager.parameters('xorn_randomMap');
+	var mapVar = Number(param['mapVar']);
+	
+	var group = $gameVariables._data[mapVar] || 0;
+	for(var mapin in $gameMap._mapList[group]){
+		if($gameMap._mapList[group][mapin].ID === mapid){
+			return $gameMap._mapList[group][mapin];
+		}
+	}
+	return -1;
+}
+var findAnotherMap = function (id){
+	var mapid = id;
 	var param = PluginManager.parameters('xorn_randomMap');
 	var mapVar = Number(param['mapVar']);
 	
@@ -137,7 +153,6 @@ function XornRandom(num){
 	var mapVar = Number(param['mapVar']);
 	
 	$gameVariables.setValue(mapVar,num);
-	debugger;
 	
 	
 	
