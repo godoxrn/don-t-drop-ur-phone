@@ -3253,6 +3253,13 @@ Game_Player.prototype.updateGuardDirection = function() {
 		this.setDirection(6);
 	};	 
 };
+var attackUsable = false;
+var itemUsable = false;
+Game_Player.prototype.setUseable = function(str){
+	if(str === "attack"){ attackUsable = true; }	
+	if(str === "item"){ itemUsable = true; }	
+}
+
 
 //==============================
 // * command Attack Usable
@@ -3260,7 +3267,7 @@ Game_Player.prototype.updateGuardDirection = function() {
 Game_Player.prototype.commandAttackUsable = function() {
 	if (!$gameSystem._chronoCom.attack) {return false};
 	if (Input.isTriggered(Moghunter.ras_buttonWeapon)) {return true};
-	if ($gameSwitches.value(20)) {$gameSwitches.setValue(20,false);return true};
+	if(attackUsable){attackUsable = false;return true}
     return false;	
 };
 
@@ -3279,7 +3286,7 @@ Game_Player.prototype.commandSkillUsable = function() {
 Game_Player.prototype.commandItemUsable = function() {
 	if (!$gameSystem._chronoCom.item) {return false};
 	if (Input.isTriggered(Moghunter.ras_buttonItem)) {return true};
-	if ($gameSwitches.value(21)) {$gameSwitches.setValue(21,false);return true};
+	if(itemUsable){itemUsable = false;return true}
     return false;			
 };	
 
