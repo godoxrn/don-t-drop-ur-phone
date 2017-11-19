@@ -8742,13 +8742,6 @@ Game_CharacterBase.prototype.updateAnimation = function() {
 // ** Game Player
 //=============================================================================	
 
-//==============================
-// * get Input Direction
-//==============================
-Game_Player.prototype.getInputDirection = function() {
-   if ($gameSystem._chronoCom.diagonal) {return Input.dir8};
-   return Input.dir4;
-};
 
 //==============================
 // * is Dashing
